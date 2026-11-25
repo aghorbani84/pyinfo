@@ -1,47 +1,61 @@
-# PyInfo
+<h1 align="center">pyinfo</h1>
 
-A lightweight Python website-inspection script that retrieves a page, formats its HTML, and extracts text from an element with the `admin-plans` CSS class.
+<p align="center">
+  <em>A minimal Python 3 script that fetches a web page and saves its HTML (and one target element's text) to a file.</em>
+</p>
 
-## What it does
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" /></a>
+  <img src="https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white" alt="Python 3" />
+</p>
 
-The current script (`soucegather.py`):
+---
 
-1. Prompts for a website URL.
-2. Downloads the page using `requests`.
-3. Parses the response with Beautiful Soup.
-4. Saves formatted HTML and the matching `.admin-plans` text to `information.txt`.
+## Overview
 
-If the target element is absent, the report records that it was not found.
+`soucegather.py` is a small learning script for basic web information gathering. It asks for a URL, downloads the page with `requests`, parses it with BeautifulSoup, and writes the results to `information.txt`.
 
-## Requirements
+## Features
+
+- Prompts for a target URL
+- Saves the full, prettified HTML source of the page
+- Extracts the text of a specific element — by default `<div class="admin-plans">` (edit the selector in the script to target something else)
+- Reports network/HTTP errors instead of crashing
+
+## Tech Stack
 
 - Python 3
-- `requests`
-- `beautifulsoup4`
+- [requests](https://requests.readthedocs.io/)
+- [Beautiful Soup 4](https://www.crummy.com/software/BeautifulSoup/)
 
-Install dependencies:
-
-```bash
-python -m pip install requests beautifulsoup4
-```
-
-## Run
+## Getting Started
 
 ```bash
 git clone https://github.com/aghorbani84/pyinfo.git
 cd pyinfo
-python soucegather.py
+pip install requests beautifulsoup4
+python3 soucegather.py
+# Enter the URL of the site: https://example.com
 ```
 
-Enter a URL when prompted. The output is written to `information.txt` in the current working directory.
+Output is written to `information.txt` in the current directory.
 
-## Limitations and responsible use
+> [!IMPORTANT]
+> Only gather information from websites you own or are permitted to access, and respect each site's terms of service and `robots.txt`.
 
-- The extractor currently targets the specific `.admin-plans` class; it is not a general-purpose crawler.
-- It processes the HTML returned by the initial HTTP response and does not execute JavaScript.
-- Use it only on websites you own or are authorized to inspect. Respect site terms, access controls, and rate limits.
-- Review downloaded content before sharing it; page HTML may contain private or sensitive data.
+## Project Structure
 
-## Contributing
+```
+.
+├── soucegather.py   # The script
+├── LICENSE          # GPL-3.0
+└── README.md
+```
 
-Improvements should preserve the script's small scope and document any new dependencies or extraction rules.
+## License
+
+Licensed under the [GNU General Public License v3.0](LICENSE).
+
+## Author
+
+**Abolfazl Ghorbani** — [@aghorbani84](https://github.com/aghorbani84)
